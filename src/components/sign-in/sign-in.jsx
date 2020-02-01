@@ -32,6 +32,11 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   };
 
+  handleGoogleSubmit = event => {
+    event.preventDefault();
+    signInWithGoogle();
+  };
+
   render() {
     return (
       <div className="sign-in">
@@ -57,7 +62,9 @@ class SignIn extends React.Component {
           />
           <div className='buttons'>
           <CustomButton type="submit"> Sign In </CustomButton>
-          <CustomButton onClick={signInWithGoogle} isGoogleSignIn> Sign In With Google </CustomButton>
+            <form onSubmit={this.handleGoogleSubmit}>
+              <CustomButton type="submit" isGoogleSignIn> Sign In With Google </CustomButton>
+            </form>
           </div>
         </form>
       </div>
