@@ -1,0 +1,24 @@
+import firebase from "firebase";
+import 'firebase/firestore';
+import 'firebase/auth';
+
+const config = {
+    apiKey: "AIzaSyDuy6Ckj49h8mtI_tXuR62a2fyyadmt2Z4",
+    authDomain: "canvas-hybrid-226504.firebaseapp.com",
+    databaseURL: "https://canvas-hybrid-226504.firebaseio.com",
+    projectId: "canvas-hybrid-226504",
+    storageBucket: "canvas-hybrid-226504.appspot.com",
+    messagingSenderId: "290734018960",
+    appId: "1:290734018960:web:259bb058327c83427d2315"
+};
+
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;
